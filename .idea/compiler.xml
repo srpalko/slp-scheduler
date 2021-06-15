@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="slps-security" />
+        <module name="slps-web" />
+        <module name="slps-ui" />
+        <module name="slps-data" />
+        <module name="slps-api" />
+        <module name="slps" />
+        <module name="slps-domain" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="slp-scheduler" options="-parameters" />
+      <module name="slps" options="-parameters" />
+      <module name="slps-api" options="-parameters" />
+      <module name="slps-data" options="-parameters" />
+      <module name="slps-domain" options="-parameters" />
+      <module name="slps-security" options="-parameters" />
+      <module name="slps-ui" options="-parameters" />
+      <module name="slps-web" options="-parameters" />
+    </option>
+  </component>
+</project>
