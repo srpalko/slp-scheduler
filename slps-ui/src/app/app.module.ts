@@ -13,13 +13,15 @@ import {ApiService} from "./api/api.service";
 import { HomeComponent } from './home/home.component';
 import { PatientCardComponent } from './patient-card/patient-card.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import { PatientSchedulerComponent } from './patient-scheduler/patient-scheduler.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ToolbarComponent,
         HomeComponent,
-        PatientCardComponent
+        PatientCardComponent,
+        PatientSchedulerComponent
     ],
     imports: [
         BrowserModule,
