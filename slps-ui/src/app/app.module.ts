@@ -9,6 +9,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {HttpClientModule} from "@angular/common/http";
+import {ApiService} from "./api/api.service";
 
 @NgModule({
     declarations: [
@@ -24,7 +25,9 @@ import {HttpClientModule} from "@angular/common/http";
         MatIconModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [
+        ApiService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
