@@ -1,4 +1,7 @@
 spring:
-  security:
-    user:
-      password: password
+  data:
+    rest:
+      base-path: /api
+  datasource:
+    generate-unique-name: false
+    name: slps

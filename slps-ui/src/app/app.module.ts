@@ -10,11 +10,16 @@ import {MatIconModule} from "@angular/material/icon";
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ApiService} from "./api/api.service";
+import { HomeComponent } from './home/home.component';
+import { PatientCardComponent } from './patient-card/patient-card.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
     declarations: [
         AppComponent,
-        ToolbarComponent
+        ToolbarComponent,
+        HomeComponent,
+        PatientCardComponent
     ],
     imports: [
         BrowserModule,
@@ -23,7 +28,8 @@ import {ApiService} from "./api/api.service";
         MatToolbarModule,
         MatButtonModule,
         MatIconModule,
-        HttpClientModule
+        HttpClientModule,
+        DragDropModule
     ],
     providers: [
         ApiService

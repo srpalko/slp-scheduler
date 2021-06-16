@@ -75,5 +75,3 @@ J
 -slps-ui/src/app/toolbar/toolbar.component.css,a\8\a8c67b34cbf2ae9bf0c01a8857d949ca1a6cad40
 a
 1slps-ui/src/app/toolbar/toolbar.component.spec.ts,7\6\76b439f034f50545f1a063d5dce6b39b94a959b7
-U
-%slps-ui/src/app/app-routing.module.ts,8\9\89bd7b1ba9e3425a777eda047c469b983769417b
