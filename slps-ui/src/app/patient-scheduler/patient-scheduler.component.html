@@ -4,7 +4,9 @@
     <div cdkDropList #patientPoolList="cdkDropList" [cdkDropListData]="patientPool"
          [cdkDropListConnectedTo]="[mondayList]" class="patient-list"
          (cdkDropListDropped)="drop($event)">
-        <div class="patient-box" *ngFor="let item of patientPool" cdkDrag>{{item}}</div>
+        <div class="patient-box" *ngFor="let item of patientPool" cdkDrag>
+            {{item.firstName}} {{item.lastName}} {{item.location.placeId}}
+        </div>
     </div>
 </div>
 <div class="schedule-container">
@@ -12,7 +14,9 @@
     <div cdkDropList #mondayList="cdkDropList" [cdkDropListData]="monday"
          [cdkDropListConnectedTo]="[patientPoolList]" class="patient-list"
          (cdkDropListDropped)="drop($event)">
-        <div class="patient-box" *ngFor="let item of monday" cdkDrag>{{item}}</div>
+        <div class="patient-box" *ngFor="let item of monday" cdkDrag>
+            {{item.firstName}} {{item.lastName}}
+        </div>
     </div>
 </div>
 
