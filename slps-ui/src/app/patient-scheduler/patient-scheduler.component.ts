@@ -11,8 +11,10 @@ export class PatientSchedulerComponent implements OnInit {
     patientPool: any;
     monday: any = [{firstName: 'Lunch'}];
     homeLocation: any = {latitude: 40.5623787, longitude: -79.93057259999999};
+    testDrive: any;
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) {
+    }
 
     drop(event: CdkDragDrop<string[]>) {
         if (event.previousContainer === event.container) {

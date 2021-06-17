@@ -31,7 +31,8 @@ import { PatientSchedulerComponent } from './patient-scheduler/patient-scheduler
         MatButtonModule,
         MatIconModule,
         HttpClientModule,
-        DragDropModule
+        DragDropModule,
+        // AgmCoreModule.forRoot({apiKey: 'AIzaSyCqHAdLTgi82XNEBtdIDKr7J0FenBq1yCI'})
     ],
     providers: [
         ApiService

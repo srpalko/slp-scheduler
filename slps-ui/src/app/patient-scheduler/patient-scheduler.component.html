@@ -1,6 +1,6 @@
 <script src="patient-scheduler.component.ts"></script>
 <div class="schedule-container">
-    <h2>Weekly Schedule</h2>
+    <h2>Patient Roster</h2>
     <div cdkDropList #patientPoolList="cdkDropList" [cdkDropListData]="patientPool"
          [cdkDropListConnectedTo]="[mondayList]" class="patient-list"
          (cdkDropListDropped)="drop($event)">
