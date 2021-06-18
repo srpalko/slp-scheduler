@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 public class LocationFinder {
     public Location findLocation(Address address) {
         GeoApiContext context = new GeoApiContext.Builder()
-                .apiKey("AIzaSyCqHAdLTgi82XNEBtdIDKr7J0FenBq1yCI").build();
+                .apiKey("").build();
         GeocodingResult[] results = GeocodingApi.geocode(context, address.toString()).awaitIgnoreError();
         var latLng = results[0].geometry.location;
         var location = new Location();

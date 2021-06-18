@@ -4,6 +4,8 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Getter
@@ -12,9 +14,17 @@ import java.util.Objects;
 @AllArgsConstructor
 @Embeddable
 public class Address {
+
+    @NotBlank
     private String streetAddress;
+
+    @NotBlank
     private String city;
+
+    @NotBlank
     private String state;
+
+    @Digits(integer=5, fraction = 0, message = "Please enter a 5 digit zip code.")
     private String zip;
 
     @Override

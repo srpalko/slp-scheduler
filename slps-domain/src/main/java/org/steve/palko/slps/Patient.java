@@ -3,6 +3,8 @@ package org.steve.palko.slps;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,14 +20,23 @@ public class Patient implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotBlank
     private String firstName;
+
+    @NotBlank
     private String lastName;
+
+    @NotNull
     private Calendar dateOfBirth;
+
+    @NotBlank
     private String ssn;
     private Date startOfCare;
     private PatientStatus status = PatientStatus.REGULAR;
 
     @Embedded
+    @NotNull
     private Address address;
 
     @Embedded
@@ -37,12 +48,12 @@ public class Patient implements Serializable {
         this.dateOfBirth = dateOfBirth;
         this.ssn = ssn;
         this.address = address;
-        this.location = new LocationFinder().findLocation(address);
     }
 
     @PrePersist
     public void setStartOfCare() {
         this.startOfCare = new Date();
+        this.location = new LocationFinder().findLocation(address);
     }
 
     public enum PatientStatus {

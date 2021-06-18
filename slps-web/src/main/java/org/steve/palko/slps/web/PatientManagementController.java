@@ -1,16 +1,19 @@
 package org.steve.palko.slps.web;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.steve.palko.slps.Patient;
 import org.steve.palko.slps.data.PatientRepository;
 
 @Controller
 @RequestMapping("/patient-management")
+@Slf4j
 public class PatientManagementController {
     private final PatientRepository patientRepository;
 
@@ -34,5 +37,11 @@ public class PatientManagementController {
     public String showNewPatientForm(Model model) {
         model.addAttribute("newPatient", new Patient());
         return "newPatientForm";
+    }
+
+    @PostMapping
+    public String processNewPatient(Patient patient) {
+        patientRepository.save(patient);
+        return "redirect:/";
     }
 }

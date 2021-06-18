@@ -3,6 +3,7 @@ package org.steve.palko.slps;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,10 +21,14 @@ public class Appointment implements Serializable {
     private Long id;
 
     @OneToOne
+    @NotNull
     private Patient patient;
 
     @OneToOne
+    @NotNull
     private Therapist therapist;
+
+    @NotNull
     private Date appointmentTime;
     private VisitType visitType = VisitType.REGULAR;
 
