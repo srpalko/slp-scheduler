@@ -1,7 +1,11 @@
 spring:
-  data:
-    rest:
-      base-path: /api
+#  data:
+#    rest:
+#      base-path: /api
   datasource:
     generate-unique-name: false
     name: slps
+
+  security:
+    user:
+      password: main

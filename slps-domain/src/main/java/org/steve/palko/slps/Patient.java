@@ -1,11 +1,9 @@
 package org.steve.palko.slps;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -14,15 +12,18 @@ import java.util.Date;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class Patient {
+public class Patient implements Serializable {
+    private static final long SERIAL_VERSION_UUID = 98768697L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
     private Calendar dateOfBirth;
     private String ssn;
+    private Date startOfCare;
+    private PatientStatus status = PatientStatus.REGULAR;
 
     @Embedded
     private Address address;
@@ -37,5 +38,14 @@ public class Patient {
         this.ssn = ssn;
         this.address = address;
         this.location = new LocationFinder().findLocation(address);
+    }
+
+    @PrePersist
+    public void setStartOfCare() {
+        this.startOfCare = new Date();
+    }
+
+    public enum PatientStatus {
+        REGULAR, PRIORITY
     }
 }

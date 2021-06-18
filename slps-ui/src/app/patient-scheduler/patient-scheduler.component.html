@@ -1,11 +1,11 @@
-<script src="patient-scheduler.component.ts"></script>
+
 <div class="schedule-container">
     <h2>Patient Roster</h2>
     <div cdkDropList #patientPoolList="cdkDropList" [cdkDropListData]="patientPool"
          [cdkDropListConnectedTo]="[mondayList]" class="patient-list"
          (cdkDropListDropped)="drop($event)">
         <div class="patient-box" *ngFor="let item of patientPool" cdkDrag>
-            {{item.firstName}} {{item.lastName}} {{item.location.placeId}}
+            {{item.firstName}} {{item.lastName}}
         </div>
     </div>
 </div>

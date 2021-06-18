@@ -10,8 +10,6 @@ import {HttpClient} from "@angular/common/http";
 export class PatientSchedulerComponent implements OnInit {
     patientPool: any;
     monday: any = [{firstName: 'Lunch'}];
-    homeLocation: any = {latitude: 40.5623787, longitude: -79.93057259999999};
-    testDrive: any;
 
     constructor(private httpClient: HttpClient) {
     }
@@ -21,8 +19,7 @@ export class PatientSchedulerComponent implements OnInit {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
         } else {
             transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex,
-                event.currentIndex);
-        }
+                event.currentIndex);}
     }
 
     ngOnInit(): void {

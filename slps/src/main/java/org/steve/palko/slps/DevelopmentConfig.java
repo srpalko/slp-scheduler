@@ -4,12 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.steve.palko.slps.data.PatientRepository;
 
 import java.util.GregorianCalendar;
 
-@Profile("!prod")
 @Configuration
 @Slf4j
 public class DevelopmentConfig {
@@ -25,8 +23,14 @@ public class DevelopmentConfig {
                     new GregorianCalendar(1980, 3, 2), "555-78-9874",
                     new Address("1240 Old Concord Rd", "Monroeville", "PA",
                             "15146")));
-            repo.save(new Patient("Stanley", "Clarke", new GregorianCalendar(1962, 3, 12),
-                    "122-45-9663", new Address("135 Shirehill Dr", "Glenshaw", "PA", "15116")));
+            repo.save(new Patient("Stanley", "Clarke",
+                    new GregorianCalendar(1962, 3, 12), "122-45-9663",
+                    new Address("135 Shirehill Dr", "Glenshaw", "PA", "15116")));
+            Patient priorityPatient = new Patient("Jaco", "Pastorius",
+                    new GregorianCalendar(1964, 4, 23), "457-88-8741",
+                    new Address("824 Isobel St", "Harwick", "PA", "15049"));
+            priorityPatient.setStatus(Patient.PatientStatus.PRIORITY);
+            repo.save(priorityPatient);
         };
     }
 }

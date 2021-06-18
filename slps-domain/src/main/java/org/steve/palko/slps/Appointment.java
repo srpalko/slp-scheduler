@@ -1,17 +1,34 @@
 package org.steve.palko.slps;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
-public class Appointment {
+@Entity
+public class Appointment implements Serializable {
+    private static final long SERIAL_VERSION_UID = 987456L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @OneToOne
     private Patient patient;
+
+    @OneToOne
     private Therapist therapist;
     private Date appointmentTime;
-    private VisitType visitType;
+    private VisitType visitType = VisitType.REGULAR;
+
+    @Embedded
+    private ClinicalNote clinicalNote;
 
     public enum VisitType {
         EVAL, REGULAR
