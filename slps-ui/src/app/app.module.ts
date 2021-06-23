@@ -7,13 +7,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import { ToolbarComponent } from './toolbar/toolbar.component';
+import {ToolbarComponent} from './toolbar/toolbar.component';
 import {HttpClientModule} from "@angular/common/http";
-import {ApiService} from "./api/api.service";
-import { HomeComponent } from './home/home.component';
-import { PatientCardComponent } from './patient-card/patient-card.component';
+import {HomeComponent} from './home/home.component';
+import {PatientCardComponent} from './patient-card/patient-card.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
-import { PatientSchedulerComponent } from './patient-scheduler/patient-scheduler.component';
+import {PatientSchedulerComponent} from './patient-scheduler/patient-scheduler.component';
+import {MatTableModule} from "@angular/material/table";
+import {StatsComponent} from './stats/stats.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -21,7 +23,8 @@ import { PatientSchedulerComponent } from './patient-scheduler/patient-scheduler
         ToolbarComponent,
         HomeComponent,
         PatientCardComponent,
-        PatientSchedulerComponent
+        PatientSchedulerComponent,
+        StatsComponent
     ],
     imports: [
         BrowserModule,
@@ -32,10 +35,11 @@ import { PatientSchedulerComponent } from './patient-scheduler/patient-scheduler
         MatIconModule,
         HttpClientModule,
         DragDropModule,
+        MatTableModule,
+        FormsModule,
         // AgmCoreModule.forRoot({apiKey: 'AIzaSyCqHAdLTgi82XNEBtdIDKr7J0FenBq1yCI'})
     ],
     providers: [
-        ApiService
     ],
     bootstrap: [AppComponent]
 })

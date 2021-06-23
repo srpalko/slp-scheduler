@@ -7,43 +7,30 @@
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" rel="stylesheet">
 </head>
 <body>
+<nav th:replace="layout :: navbar"></nav>
 <div class="container">
-    <h3>Priority Patient Roster</h3>
-    <table class="table" style="width: 50%">
+    <h1>Patient Roster</h1>
+    <table class="table table-sm table-hover" style="width: 50%">
         <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
+            <th scope="col">Name</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="patient : ${priorityPatients}">
+        <tr th:each="patient : ${patients}">
             <th scope="row" th:text="${patient.id}">ID</th>
-            <td th:text="${patient.firstName}">FIRST NAME</td>
-            <td th:text="${patient.lastName}">LAST NAME</td>
+            <td th:text="${patient.getFirstName()} + ' ' + ${patient.lastName}">FIRST NAME</td>
+            <td th:text="${patient.getDateOfBirthAsString}">DOB</td>
+            <td th:text="${patient.status}">STATUS</td>
             <td>
-                <button class="btn btn-primary" type="button">edit</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <h3>Patient Roster</h3>
-    <table class="table" style="width: 50%">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="patient : ${regularPatients}">
-            <th scope="row" th:text="${patient.id}">ID</th>
-            <td th:text="${patient.firstName}">FIRST NAME</td>
-            <td th:text="${patient.lastName}">LAST NAME</td>
-            <td>
-                <button class="btn btn-primary" type="button">edit</button>
+                <form th:action="@{/patient-management/edit}" method="get">
+                    <button class="btn btn-secondary btn-sm" th:value="${patient.id}" name="patientId"
+                            type="submit">Edit</button>
+                </form>
             </td>
         </tr>
         </tbody>

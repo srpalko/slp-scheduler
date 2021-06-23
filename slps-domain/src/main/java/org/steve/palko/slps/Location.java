@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -13,7 +14,8 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 @Embeddable
 @Slf4j
-public class Location {
+public class Location implements Serializable {
+    private static final long serialVersionUID = 12L;
     private double latitude;
     private double longitude;
     private String placeId;

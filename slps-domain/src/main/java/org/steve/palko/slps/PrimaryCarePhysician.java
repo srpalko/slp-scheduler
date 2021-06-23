@@ -4,7 +4,9 @@ import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
@@ -13,20 +15,23 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class PrimaryCarePhysician {
+public class PrimaryCarePhysician implements Serializable {
+    private static final long serialVersionUID = 28288L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Name cannot be blank")
     private String firstName;
 
-    @NotBlank
+    @NotBlank(message = "Name cannot be blank")
     private String lastName;
 
-    @NotBlank
+    @NotBlank(message = "Phone cannot be blank")
     private String phoneNumber;
+
+    @Email(message = "Not a valid email address")
     private String email;
 
     @Embedded

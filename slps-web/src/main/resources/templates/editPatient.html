@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<nav th:replace="layout :: navbar"></nav>
+<div class="container">
+    <h1>Edit Patient</h1>
+    <form class="row g-3" method="post" th:object="${patient}">
+        <div class="col-md-6">
+            <label class="form-label" for="firstName">First name</label>
+            <input class="form-control" id="firstName" th:field="*{firstName}" th:placeholder="${patient.firstName}"
+                   type="text">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="lastName">Last name</label>
+            <input class="form-control" id="lastName" th:field="*{lastName}" th:placeholder="${patient.lastName}"
+                   type="text">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="ssn">Social Security #</label>
+            <input class="form-control" id="ssn" placeholder="123-45-678" th:field="*{ssn}"
+                   th:placeholder="${patient.ssn}"
+                   type="text"/>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="dob">Date of birth</label>
+            <input class="form-control" id="dob" th:field="*{dateOfBirth}"
+                   th:value="#{dates.format(patient.dateOfBirth, 'yyyy-MM-dd')}"
+                   type="date">
+        </div>
+        <div class="col-12">
+            <label class="form-label" for="inputAddress">Address</label>
+            <input class="form-control" id="inputAddress" placeholder="1234 Main St" th:field="*{address.streetAddress}"
+                   th:placeholder="${patient.address.streetAddress}" type="text">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="inputCity">City</label>
+            <input class="form-control" id="inputCity" th:field="*{address.city}"
+                   th:placeholder="${patient.address.city}"
+                   type="text">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="inputState">State</label>
+            <select class="form-select" id="inputState" th:field="*{address.state}">
+                <option selected value="0">Choose...</option>
+                <option value="1">...</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label" for="inputZip">Zip</label>
+            <input class="form-control" id="inputZip" th:field="*{address.zip}" th:placeholder="${patient.address.zip}"
+                   type="text">
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" id="gridCheck"
+                       th:checked="${patient.getStatus().equals('PRIORITY') ? true : false}" type="checkbox">
+                <label class="form-check-label" for="gridCheck">
+                    Priority
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Update Patient</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

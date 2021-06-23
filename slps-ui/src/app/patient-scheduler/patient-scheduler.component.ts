@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
-import {HttpClient} from "@angular/common/http";
+import {PatientService} from "../services/patient.service";
+import {Patient} from "../services/patient";
 
 @Component({
     selector: 'slps-patient-scheduler',
@@ -8,22 +9,22 @@ import {HttpClient} from "@angular/common/http";
     styleUrls: ['./patient-scheduler.component.css']
 })
 export class PatientSchedulerComponent implements OnInit {
-    patientPool: any;
-    monday: any = [{firstName: 'Lunch'}];
+    patientPool: Patient[] = [];
+    monday: Patient[] = [];
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private patientService: PatientService) {
     }
 
-    drop(event: CdkDragDrop<string[]>) {
+    drop(event: CdkDragDrop<any>) {
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
         } else {
             transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex,
-                event.currentIndex);}
+                event.currentIndex);
+        }
     }
 
     ngOnInit(): void {
-        this.httpClient.get('http://localhost:8080/patient')
-            .subscribe(data => this.patientPool = data);
+        this.patientService.getByTherapistId(5).subscribe(data => this.patientPool = data)
     }
 }

@@ -3,6 +3,7 @@ package org.steve.palko.slps;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,10 +12,9 @@ import java.util.Date;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Appointment implements Serializable {
-    private static final long SERIAL_VERSION_UID = 987456L;
+    private static final long serialVersionUID = 987456L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +29,7 @@ public class Appointment implements Serializable {
     private Therapist therapist;
 
     @NotNull
+    @Future
     private Date appointmentTime;
     private VisitType visitType = VisitType.REGULAR;
 

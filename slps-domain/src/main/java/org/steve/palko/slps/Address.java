@@ -6,6 +6,8 @@ import org.hibernate.Hibernate;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
@@ -13,15 +15,17 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class Address {
+public class Address implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    @NotBlank
+    @NotBlank(message="Street address is required")
     private String streetAddress;
 
-    @NotBlank
+    @NotBlank(message = "City is required")
     private String city;
 
-    @NotBlank
+    @NotBlank(message = "State is required")
+    @Size(max = 2, message = "State should be in format XX eg. PA")
     private String state;
 
     @Digits(integer=5, fraction = 0, message = "Please enter a 5 digit zip code.")
