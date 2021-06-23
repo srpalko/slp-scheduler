@@ -26,9 +26,9 @@ public class Therapist implements UserDetails, Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @OneToMany(targetEntity = Appointment.class)
-    @ToString.Exclude
-    private List<Appointment> appointmentList = new ArrayList<>();
+//    @OneToMany
+//    @ToString.Exclude
+//    private EnumMap<DayOfWeek, List<Patient>> appointmentList;
 
     @OneToMany
     @ToString.Exclude
@@ -67,10 +67,10 @@ public class Therapist implements UserDetails, Serializable {
     public void addPatient(Patient patient) {
         this.patients.add(patient);
     }
-
-    public void addAppointment(Appointment appointment) {
-        this.appointmentList.add(appointment);
-    }
+//
+//    public void addAppointment(List<Patient> patients, DayOfWeek day) {
+//        this.appointmentList.put(day, patients);
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

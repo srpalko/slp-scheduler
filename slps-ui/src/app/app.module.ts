@@ -24,7 +24,7 @@ import {FormsModule} from "@angular/forms";
         HomeComponent,
         PatientCardComponent,
         PatientSchedulerComponent,
-        StatsComponent
+        StatsComponent,
     ],
     imports: [
         BrowserModule,
@@ -39,8 +39,7 @@ import {FormsModule} from "@angular/forms";
         FormsModule,
         // AgmCoreModule.forRoot({apiKey: 'AIzaSyCqHAdLTgi82XNEBtdIDKr7J0FenBq1yCI'})
     ],
-    providers: [
-    ],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {

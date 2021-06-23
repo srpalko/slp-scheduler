@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.steve.palko.slps.Patient;
 import org.steve.palko.slps.data.PatientRepository;
 
@@ -16,6 +13,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/patient-management")
+@SessionAttributes("patient")
 @Slf4j
 public class PatientManagementController {
     private final PatientRepository patientRepository;
@@ -57,6 +55,47 @@ public class PatientManagementController {
 
         patientRepository.save(patient);
         log.info("Patient processed successfully");
-        return "redirect:/";
+        return "redirect:/patient-management";
+    }
+
+    @PostMapping("/delete")
+    public String deletePatient(String patientId) {
+        patientRepository.deleteById(Long.parseLong(patientId));
+        return "redirect:/patient-management";
+    }
+
+    @PostMapping("/update")
+    public String updatePatient(@Valid @ModelAttribute("patient") Patient patient, Errors errors) {
+        if (errors.hasErrors()) {
+            return "editPatient";
+        }
+        var updatePatient = patientRepository.getById(patient.getId());
+        if (patient.getFirstName() != null) {
+            updatePatient.setFirstName(patient.getFirstName());
+        }
+        if (patient.getLastName() != null) {
+            updatePatient.setLastName(patient.getLastName());
+        }
+        if (patient.getSsn() != null) {
+            updatePatient.setSsn(patient.getSsn());
+        }
+        if (patient.getDateOfBirth() != null) {
+            updatePatient.setDateOfBirth(patient.getDateOfBirth());
+        }
+        if (patient.getAddress().getStreetAddress() != null) {
+            updatePatient.getAddress().setStreetAddress(patient.getAddress().getStreetAddress());
+        }
+        if (patient.getAddress().getCity() != null) {
+            updatePatient.getAddress().setCity(patient.getAddress().getCity());
+        }
+        if (patient.getAddress().getState() != null) {
+            updatePatient.getAddress().setState(patient.getAddress().getState());
+        }
+        if (patient.getAddress().getZip() != null) {
+            updatePatient.getAddress().setZip(patient.getAddress().getZip());
+        }
+        updatePatient.setStatus(patient.getStatus());
+        patientRepository.save(updatePatient);
+        return "redirect:/patient-management";
     }
 }

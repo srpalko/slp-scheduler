@@ -1,23 +1,59 @@
-
-<div class="schedule-container">
-    <h2>Patient Roster</h2>
-    <div cdkDropList #patientPoolList="cdkDropList" [cdkDropListData]="patientPool"
-         [cdkDropListConnectedTo]="[mondayList]" class="patient-list"
-         (cdkDropListDropped)="drop($event)">
-        <div class="patient-box" *ngFor="let item of patientPool" cdkDrag>
-            {{item.firstName}} {{item.lastName}}
+<div cdkDropListGroup>
+    <div class="schedule-container">
+        <h2>Assigned Patients</h2>
+        <div cdkDropList [cdkDropListData]="patientPool" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <div class="patient-box" *ngFor="let item of patientPool" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </div>
+        </div>
+    </div>
+    <div class="schedule-container">
+        <h2>Monday</h2>
+        <div cdkDropList [cdkDropListData]="monday" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <div class="patient-box" *ngFor="let item of monday" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </div>
+        </div>
+    </div>
+    <div class="schedule-container">
+        <h2>Tuesday</h2>
+        <div cdkDropList [cdkDropListData]="tuesday" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <div class="patient-box" *ngFor="let item of tuesday" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </div>
+        </div>
+    </div>
+    <div class="schedule-container">
+        <h2>Wednesday</h2>
+        <div cdkDropList [cdkDropListData]="wednesday" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <div class="patient-box" *ngFor="let item of wednesday" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </div>
+        </div>
+    </div>
+    <div class="schedule-container">
+        <h2>Thursday</h2>
+        <div cdkDropList [cdkDropListData]="thursday" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <div class="patient-box" *ngFor="let item of thursday" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </div>
+        </div>
+    </div>
+    <div class="schedule-container">
+        <h2>Friday</h2>
+        <div cdkDropList [cdkDropListData]="friday" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <div class="patient-box" *ngFor="let item of friday" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </div>
         </div>
     </div>
 </div>
-<div class="schedule-container">
-    <h2>Monday</h2>
-    <div cdkDropList #mondayList="cdkDropList" [cdkDropListData]="monday"
-         [cdkDropListConnectedTo]="[patientPoolList]" class="patient-list"
-         (cdkDropListDropped)="drop($event)">
-        <div class="patient-box" *ngFor="let item of monday" cdkDrag>
-            {{item.firstName}} {{item.lastName}}
-        </div>
-    </div>
-</div>
+<button class="mat-button" (click)="saveSchedule()">Save Schedule</button>
 
 

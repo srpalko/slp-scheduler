@@ -12,8 +12,10 @@ spring:
     driver-class-name: org.mariadb.jdbc.Driver
 
   security:
-    user:
-      password: main
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
 
   thymeleaf:
     cache: false #change to true before deploying!

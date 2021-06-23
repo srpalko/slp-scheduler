@@ -75,7 +75,7 @@ public class Patient implements Serializable {
         return format.format(dateOfBirth.getTime());
     }
 
-    public enum PatientStatus {
+    public static enum PatientStatus {
         REGULAR, PRIORITY
     }
 }

@@ -29,14 +29,9 @@ public class Appointment implements Serializable {
     private Therapist therapist;
 
     @NotNull
-    @Future
-    private Date appointmentTime;
-    private VisitType visitType = VisitType.REGULAR;
+    private VisitDay appointmentDay;
 
-    @Embedded
-    private ClinicalNote clinicalNote;
-
-    public enum VisitType {
-        EVAL, REGULAR
+    public enum VisitDay {
+        M, T, W, R, F
     }
 }
