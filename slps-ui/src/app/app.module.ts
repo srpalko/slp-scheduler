@@ -16,6 +16,8 @@ import {PatientSchedulerComponent} from './patient-scheduler/patient-scheduler.c
 import {MatTableModule} from "@angular/material/table";
 import {StatsComponent} from './stats/stats.component';
 import {FormsModule} from "@angular/forms";
+import {LayoutModule} from "@angular/cdk/layout";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
     declarations: [
@@ -37,6 +39,8 @@ import {FormsModule} from "@angular/forms";
         DragDropModule,
         MatTableModule,
         FormsModule,
+        LayoutModule,
+        MatCardModule,
         // AgmCoreModule.forRoot({apiKey: 'AIzaSyCqHAdLTgi82XNEBtdIDKr7J0FenBq1yCI'})
     ],
     providers: [],

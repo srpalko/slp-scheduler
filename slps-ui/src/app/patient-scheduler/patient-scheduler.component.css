@@ -4,6 +4,15 @@
     margin: 0 25px 25px 0;
     display: inline-block;
     vertical-align: top;
+    padding-left: 20px;
+}
+
+.scheduler {
+    background-color: #e3e1e7;
+}
+
+h2 {
+    text-align: center;
 }
 
 .patient-list {
@@ -15,18 +24,9 @@
     display: block;
 }
 
-.patient-box {
-    padding: 20px 10px;
-    border-bottom: solid 1px #CCCCCC;
-    color: rgba(0, 0, 0, 0.87);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    cursor: move;
-    background: white;
-    font-size: 14px;
+mat-card {
+    border-bottom: 1px solid black;
+    background-color: #c5abde;
 }
 
 .cdk-drag-preview {

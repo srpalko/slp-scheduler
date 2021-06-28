@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class LocationFinder {
     public Location findLocation(Address address) {
         GeoApiContext context = new GeoApiContext.Builder()
-                .apiKey("").build();
+                .apiKey("AIzaSyAr4ia9Od2D3LXJhll0mIdQHVrSMKJoMsc").build();
         GeocodingResult[] results = GeocodingApi.geocode(context, address.toString()).awaitIgnoreError();
         if (results.length == 0) {
             return null;

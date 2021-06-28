@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
         this.patients$ = patientService.getAll();
     }
 
-    displayedColumns: string[] = ['firstName', 'lastName', 'addButton'];
+    displayedColumns: string[] = ['firstName', 'addButton'];
 
     ngOnInit() {
     }
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
 
     onSubmit() {
         this.selectedPatients.forEach(patient => patient.assigned = true);
-        this.httpClient.put<string>('http://localhost:8080/patient/5',
+        this.httpClient.put<string>('http://localhost:8080/patient/10',
             this.selectedPatients,
             {headers: new HttpHeaders().set('Content-type', 'application/json')}
         ).subscribe(data => this.patients$ = this.patientService.getAll());

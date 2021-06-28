@@ -3,12 +3,8 @@
     <table mat-table [dataSource]="patients$">
         <caption>Available patients</caption>
         <ng-container matColumnDef="firstName">
-            <th mat-header-cell *matHeaderCellDef scope="col">First</th>
-            <td mat-cell *matCellDef="let patient">{{patient.firstName}}</td>
-        </ng-container>
-        <ng-container matColumnDef="lastName">
-            <th mat-header-cell *matHeaderCellDef scope="col">Last</th>
-            <td mat-cell *matCellDef="let patient">{{patient.lastName}}</td>
+            <th mat-header-cell *matHeaderCellDef scope="col">Name</th>
+            <td mat-cell *matCellDef="let patient">{{patient.firstName}} {{patient.lastName}}</td>
         </ng-container>
         <ng-container matColumnDef="addButton">
             <th mat-header-cell *matHeaderCellDef scope="col">Add</th>

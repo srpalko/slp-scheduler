@@ -15,5 +15,7 @@ export interface Therapist {
         state: string;
         zip: string;
     }
+    testX: number;
+    testY: number;
 }
 

@@ -1,18 +1,19 @@
 package org.steve.palko.slps;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
 
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Entity
+@Embeddable
 public class Appointment implements Serializable {
     private static final long serialVersionUID = 987456L;
 
@@ -27,11 +28,4 @@ public class Appointment implements Serializable {
     @OneToOne
     @NotNull
     private Therapist therapist;
-
-    @NotNull
-    private VisitDay appointmentDay;
-
-    public enum VisitDay {
-        M, T, W, R, F
-    }
 }
