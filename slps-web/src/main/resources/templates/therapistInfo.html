@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>SLPS ADMIN</title>
+  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" rel="stylesheet">
+</head>
+<body>
+<nav th:replace="layout :: navbar"></nav>
+<div class="container">
+  <h1>Therapist Info</h1>
+  <div class="row">
+    <div class = "col" th:text="${therapist.firstName} + ' ' + ${therapist.lastName}"></div>
+    <div class = "col" th:text="${therapist.phoneNumber}"></div>
+    <div class="col" th:text="${therapist.email}"></div>
+  </div>
+  <div class="row">
+    <div class="col" th:text="${therapist.address.toString()}"></div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h2>Patients</h2>
+      <div th:each="patient : ${therapist.getPatients()}">
+        <div class="row">
+          <p class="col" th:text="${patient.firstName} + ' ' + ${patient.lastName}">PATIENT NAME</p>
+          <form class="col" th:action="@{/patient-management/edit}" method="get">
+            <button class="btn btn-secondary btn-sm" th:value="${patient.id}" name="patientId"
+                    type="submit">Edit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <h2>Appointments</h2>
+    </div>
+  </div>
+</div>
+<script crossorigin="anonymous"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

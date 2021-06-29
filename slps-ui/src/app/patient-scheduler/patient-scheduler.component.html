@@ -1,0 +1,60 @@
+<div cdkDropListGroup class="scheduler">
+    <div class="schedule-container">
+        <h2>Unscheduled Patients</h2>
+        <div cdkDropList [cdkDropListData]="patientPool" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <mat-card *ngFor="let item of patientPool" cdkDrag>
+                {{item.firstName}} {{item.lastName}} {{item.distance}}
+            </mat-card>
+        </div>
+    </div>
+    <div class="schedule-container">
+        <h2>Monday</h2>
+        <div cdkDropList [cdkDropListData]="schedule.monday" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <mat-card *ngFor="let item of schedule.monday" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </mat-card>
+        </div>
+    </div>
+    <div class="schedule-container">
+        <h2>Tuesday</h2>
+        <div cdkDropList [cdkDropListData]="schedule.tuesday" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <mat-card *ngFor="let item of schedule.tuesday" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </mat-card>
+        </div>
+    </div>
+    <div class="schedule-container">
+        <h2>Wednesday</h2>
+        <div cdkDropList [cdkDropListData]="schedule.wednesday" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <mat-card *ngFor="let item of schedule.wednesday" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </mat-card>
+        </div>
+    </div>
+    <div class="schedule-container">
+        <h2>Thursday</h2>
+        <div cdkDropList [cdkDropListData]="schedule.thursday" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <mat-card *ngFor="let item of schedule.thursday" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </mat-card>
+        </div>
+    </div>
+    <div class="schedule-container">
+        <h2>Friday</h2>
+        <div cdkDropList [cdkDropListData]="schedule.friday" class="patient-list"
+             (cdkDropListDropped)="drop($event)">
+            <mat-card *ngFor="let item of schedule.friday" cdkDrag>
+                {{item.firstName}} {{item.lastName}}
+            </mat-card>
+        </div>
+    </div>
+</div>
+<button class="mat-button" (click)="saveSchedule()">Save Schedule</button>
+
+
+

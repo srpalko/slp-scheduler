@@ -1,0 +1,39 @@
+spring:
+  data:
+    rest:
+      base-path: /api
+  datasource:
+    #    Two lines below are for the embedded H2 database
+    #    generate-unique-name: false
+    #    name: slps
+    url: jdbc:mariadb://localhost:3306/slps
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
+
+  thymeleaf:
+    cache: false #change to true before deploying!
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+#server:
+#  port: 8443
+#  ssl:
+#    key-store: 'C:\Users\steph\slps\slp-scheduler\mykeys.jks'
+#    key-store-password: mainman7
+#    key-password: mainman7
+
+logging:
+  level:
+    root: info
+  file:
+    path: /var/logs/
+    name: slps.log
+

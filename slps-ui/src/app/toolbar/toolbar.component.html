@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button color="accent" class="mat-icon-button" aria-label="Icon button">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>SLPS</span>
+    <span class="spacer"></span>
+    <button mat-icon-button class="mat-icon-button" aria-label="home button"
+            [routerLink]="['home']">
+        <mat-icon color="accent">home</mat-icon>
+    </button>
+    <button mat-icon-button class="mat-icon-button" aria-label="scheduler button"
+            [routerLink]="['scheduler']">
+        <mat-icon color="accent">calendar_today</mat-icon>
+    </button>
+    <button mat-icon-button class="mat-icon-button" aria-label="stats button"
+            [routerLink]="['stats']">
+        <mat-icon color="accent">home</mat-icon>
+    </button>
+</mat-toolbar>
